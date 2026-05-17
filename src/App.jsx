@@ -705,7 +705,12 @@ function ResV({r,onN,onH,hl,doc,eCons,pName}){
   if(!r)return null;
   const read=()=>{if(spk){speechSynthesis.cancel();setSpk(false);return}
     const t="Urgency: "+u.l+". "+u.a+" . "+r.summary+" . "+(r.possible_conditions||[]).map(c=>c.name+": "+c.explanation).join(". ")+" . Actions: "+(r.recommended_actions||[]).join(". ")+" . Relief tips: "+(r.relief_tips||[]).join(". ")+" . "+r.reasoning;
-    const ut=new SpeechSynthesisUtterance(t);ut.rate=.85;ut.onend=()=>setSpk(false);ut.onerror=()=>setSpk(false);setSpk(true);speechSynthesis.speak(ut)};
+    const ut=new SpeechSynthesisUtterance(t);ut.rate=.9;ut.pitch=1.05;
+    // Pick the most natural voice available
+    const voices=speechSynthesis.getVoices();
+    const preferred=voices.find(v=>v.name.includes("Google")&&v.name.includes("Female"))||voices.find(v=>v.name.includes("Google"))||voices.find(v=>v.name.includes("Natural"))||voices.find(v=>v.name.includes("Samantha"))||voices.find(v=>v.name.includes("Karen"))||voices.find(v=>v.name.includes("Zira"))||voices.find(v=>v.name.includes("Female"))||voices.find(v=>!v.localService&&v.lang.startsWith("en"))||voices.find(v=>v.lang.startsWith("en"));
+    if(preferred)ut.voice=preferred;
+    ut.onend=()=>setSpk(false);ut.onerror=()=>setSpk(false);setSpk(true);speechSynthesis.speak(ut)};
   const share=async()=>{const t="MedGuide AI Report\nUrgency: "+u.l+"\n\n"+r.summary+"\n\nConditions:\n"+(r.possible_conditions||[]).map(c=>"• "+c.name+": "+c.explanation).join("\n")+"\n\nActions:\n"+(r.recommended_actions||[]).join("\n")+"\n\n💡 Relief Tips:\n"+(r.relief_tips||[]).map(t=>"• "+t).join("\n")+"\n\n⚠️ Watch for:\n"+(r.red_flags_to_watch||[]).join("\n")+"\n\nNot a medical diagnosis.";
     if(navigator.share)try{await navigator.share({title:"Report",text:t});return}catch{}
     try{await navigator.clipboard.writeText(t);setCpd(true);setTimeout(()=>setCpd(false),2000)}catch{}};
