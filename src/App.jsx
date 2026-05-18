@@ -100,10 +100,14 @@ function cleanJSON(text){
 }
 
 // ═══ CLAUDE HAIKU AI ═══
+const isDev = window.location.hostname === 'localhost';
+
 async function aiCall(msg,sys,hasImage,imageB64,maxTok){
   const content=hasImage&&imageB64?[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imageB64}},{type:"text",text:msg}]:[{type:"text",text:msg}];
   const body={model:"claude-haiku-4-5-20251001",max_tokens:maxTok||2500,system:sys||SYS,messages:[{role:"user",content}]};
-  const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":import.meta.env.VITE_ANTHROPIC_KEY,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify(body)});
+  const res=isDev
+    ?await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":import.meta.env.VITE_ANTHROPIC_KEY,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify(body)})
+    :await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
   if(!res.ok){let d="";try{d=(await res.json())?.error?.message||""}catch{}throw new Error(d||"Request failed.")}
   const data=await res.json();const text=(data.content||[]).filter(c=>c.type==="text").map(c=>c.text).join("");
   if(!text)throw new Error("Empty response.");
@@ -111,14 +115,17 @@ async function aiCall(msg,sys,hasImage,imageB64,maxTok){
 }
 
 async function aiSearch(msg,sys){
-  const body={model:"claude-haiku-4-5-20251001",max_tokens:800,system:sys,tools:[{type:"web_search_20250305",name:"web_search"}],messages:[{role:"user",content:msg}]};
-  const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":import.meta.env.VITE_ANTHROPIC_KEY,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify(body)});
+  const body={model:"claude-haiku-4-5-20251001",max_tokens:1200,system:sys,tools:[{type:"web_search_20250305",name:"web_search"}],messages:[{role:"user",content:msg}]};
+  const res=isDev
+    ?await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":import.meta.env.VITE_ANTHROPIC_KEY,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify(body)})
+    :await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
   if(!res.ok){let d="";try{d=(await res.json())?.error?.message||""}catch{}throw new Error(d||"Search failed.")}
   const data=await res.json();
   let text="";for(const block of(data.content||[])){if(block.type==="text")text+=block.text}
   if(!text)throw new Error("No results.");
   return cleanJSON(text);
 }
+
 
 async function triageAI(sy,hi,lang){
   const ln=LANGS.find(l=>l.c===lang)?.l||"English";
