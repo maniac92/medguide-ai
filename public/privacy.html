@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MedGuide AI — Privacy Policy</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a2b2a;padding:40px 20px;max-width:700px;margin:0 auto;font-size:15px;line-height:1.7}
+h1{font-size:26px;margin-bottom:8px;color:#0F766E}
+h2{font-size:18px;margin:28px 0 10px;color:#0F766E}
+h3{font-size:15px;margin:18px 0 8px;color:#1a2b2a}
+p{margin-bottom:14px;color:#4a6463}
+ul{margin:0 0 14px 20px;color:#4a6463}
+li{margin-bottom:6px}
+.updated{font-size:13px;color:#7a9492;margin-bottom:30px}
+.back{display:inline-block;margin-bottom:20px;color:#0F766E;text-decoration:none;font-weight:600;font-size:14px}
+table{width:100%;border-collapse:collapse;margin:14px 0}
+td,th{padding:10px 12px;border:1px solid #e2edec;font-size:13px;text-align:left}
+th{background:#f4f8f7;color:#0F766E;font-weight:600}
+</style>
+</head>
+<body>
+<a href="/" class="back">← Back to MedGuide AI</a>
+<h1>Privacy Policy</h1>
+<p class="updated">Last updated: May 2025</p>
+
+<p>MedGuide AI ("we," "our," or "the App") is committed to protecting your privacy. This policy explains what data we collect, how we use it, and your rights.</p>
+
+<h2>1. Data We Collect</h2>
+
+<h3>1.1 Data You Provide</h3>
+<table>
+<tr><th>Data Type</th><th>Purpose</th><th>Storage</th></tr>
+<tr><td>Name, age, sex</td><td>Personalize health guidance</td><td>Local device + Cloud (if signed in)</td></tr>
+<tr><td>Symptoms, body areas, severity</td><td>Generate health assessment</td><td>Local device + Cloud (if signed in)</td></tr>
+<tr><td>Photos of symptoms</td><td>Visual AI analysis</td><td>Processed in memory only — never stored on servers</td></tr>
+<tr><td>Vitals (blood pressure, heart rate, etc.)</td><td>Health tracking</td><td>Local device + Cloud (if signed in)</td></tr>
+<tr><td>Medications</td><td>Drug interaction awareness</td><td>Local device + Cloud (if signed in)</td></tr>
+<tr><td>Mood entries</td><td>Mental health tracking</td><td>Local device + Cloud (if signed in)</td></tr>
+<tr><td>Email address</td><td>Account authentication</td><td>Cloud (Supabase Auth)</td></tr>
+</table>
+
+<h3>1.2 Anonymous Aggregated Data</h3>
+<p>When you perform a health check, we collect <strong>anonymized</strong> data that <strong>cannot be linked back to you</strong>:</p>
+<ul>
+<li>General region (city-level, not exact location)</li>
+<li>Age bracket (e.g., "30s" — not exact age)</li>
+<li>Sex</li>
+<li>Body areas checked</li>
+<li>Symptom keywords</li>
+<li>Urgency level</li>
+</ul>
+<p>This data contains <strong>no names, no email addresses, no account IDs, and no personal identifiers</strong>. It is used to power population health intelligence features such as outbreak detection and symptom trend analysis.</p>
+
+<h3>1.3 Location Data</h3>
+<p>We request your general location (city/country level) to provide region-relevant health guidance and to contribute to anonymous regional health data. Location is detected via your browser and is never tracked continuously. You can deny location access and the App will still function.</p>
+
+<h2>2. How We Use Your Data</h2>
+<ul>
+<li><strong>Health assessments:</strong> Your symptoms are sent to an AI service (Anthropic Claude) for analysis. The AI processes your data in real-time and does not store it.</li>
+<li><strong>Personal health tracking:</strong> Your vitals, medications, mood, and health history are stored to provide continuity of care.</li>
+<li><strong>Population health intelligence:</strong> Anonymous, aggregated data helps detect disease outbreaks and health trends. No individual can be identified from this data.</li>
+<li><strong>Improving the service:</strong> We may analyze usage patterns to improve the App's features and accuracy.</li>
+</ul>
+
+<h2>3. Data Storage and Security</h2>
+<ul>
+<li><strong>Without an account:</strong> All personal data is stored locally on your device using browser localStorage. We cannot access it.</li>
+<li><strong>With an account:</strong> Personal data is stored in a secure cloud database (Supabase) with row-level security. Only you can access your own data.</li>
+<li><strong>Encryption:</strong> All data transmission uses HTTPS/TLS encryption.</li>
+<li><strong>Photos:</strong> Symptom photos are compressed, sent to the AI for analysis, and immediately discarded. They are <strong>never stored</strong> on any server.</li>
+</ul>
+
+<h2>4. Third-Party Services</h2>
+<table>
+<tr><th>Service</th><th>Purpose</th><th>Data Shared</th></tr>
+<tr><td>Anthropic (Claude AI)</td><td>Health assessment AI</td><td>Symptoms, age, sex (per-session, not stored by Anthropic)</td></tr>
+<tr><td>Supabase</td><td>Database and authentication</td><td>Account data, health records (encrypted)</td></tr>
+<tr><td>Vercel</td><td>App hosting</td><td>No personal data</td></tr>
+<tr><td>OpenStreetMap (Nominatim)</td><td>Location detection</td><td>GPS coordinates (not linked to identity)</td></tr>
+</table>
+
+<h2>5. Your Rights</h2>
+<p>You have the right to:</p>
+<ul>
+<li><strong>Access</strong> all data we hold about you</li>
+<li><strong>Delete</strong> your account and all associated data (via Settings → Reset Everything)</li>
+<li><strong>Opt out</strong> of location sharing at any time</li>
+<li><strong>Use the App without an account</strong> (data stays on your device only)</li>
+<li><strong>Export</strong> your health reports as PDF</li>
+</ul>
+
+<h2>6. Children's Privacy</h2>
+<p>MedGuide AI is not intended for use by children under 18 without parental or guardian supervision. The family member feature allows parents/guardians to manage health checks for their children under their own account.</p>
+
+<h2>7. Data Retention</h2>
+<ul>
+<li>Account data is retained until you delete your account.</li>
+<li>Anonymous aggregated data is retained indefinitely for public health purposes.</li>
+<li>Local data can be cleared at any time through the App's settings.</li>
+</ul>
+
+<h2>8. International Data</h2>
+<p>MedGuide AI operates globally. Your data may be processed in countries outside your own. We ensure all data handling meets equivalent privacy standards regardless of location.</p>
+
+<h2>9. POPIA Compliance (South Africa)</h2>
+<p>For users in South Africa, we comply with the Protection of Personal Information Act (POPIA). We process personal information lawfully, minimize data collection, and ensure your right to access, correct, and delete your data.</p>
+
+<h2>10. GDPR Compliance (EU)</h2>
+<p>For users in the European Union, we comply with the General Data Protection Regulation. Our legal basis for processing is consent (which you provide by using the App) and legitimate interest (for anonymous public health data).</p>
+
+<h2>11. Changes to This Policy</h2>
+<p>We may update this Privacy Policy periodically. We will notify users of significant changes through the App.</p>
+
+<h2>12. Contact</h2>
+<p>For privacy concerns or data requests, contact us at: <strong>privacy@medguide-ai.com</strong></p>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="MedGuide AI — AI-powered health intelligence. Get doctor-level symptom analysis, track your vitals, and access global health alerts. Free for everyone.">
+<meta name="theme-color" content="#0F766E">
+<meta property="og:title" content="MedGuide AI — Your Health Intelligence">
+<meta property="og:description" content="AI-powered health guidance with doctor-level reasoning. Free for everyone.">
+<meta property="og:type" content="website">
+<title>MedGuide AI — AI Health Intelligence Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;color:#1a2b2a;background:#F4F8F7;-webkit-font-smoothing:antialiased}
+.nav{padding:16px 24px;display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:#0F766E;text-decoration:none}
+.nav-icon{width:36px;height:36px;background:linear-gradient(135deg,#0F766E,#14B8A6);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:#4a6463;text-decoration:none;font-size:14px;font-weight:500}
+.nav-links a:hover{color:#0F766E}
+.cta-btn{padding:10px 24px;background:linear-gradient(135deg,#0F766E,#0A5C56);color:#fff;border:none;border-radius:12px;font-family:'DM Sans';font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 4px 16px rgba(15,118,110,.25)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(15,118,110,.35)}
+.cta-btn-outline{padding:10px 24px;background:transparent;color:#0F766E;border:2px solid #0F766E;border-radius:12px;font-family:'DM Sans';font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
+.cta-btn-outline:hover{background:#CCFBF1}
+
+/* Hero */
+.hero{max-width:1100px;margin:0 auto;padding:60px 24px 40px;text-align:center}
+.hero-badge{display:inline-block;padding:6px 16px;background:#CCFBF1;color:#0F766E;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:20px;letter-spacing:.5px}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(32px,5vw,56px);font-weight:700;line-height:1.15;margin-bottom:18px;letter-spacing:-1px;color:#1a2b2a}
+.hero h1 span{color:#0F766E}
+.hero p{font-size:18px;color:#4a6463;max-width:600px;margin:0 auto 32px;line-height:1.6}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-visual{margin:50px auto 0;max-width:360px;background:#fff;border-radius:24px;box-shadow:0 20px 60px rgba(15,118,110,.12);padding:20px;border:1px solid #E2EDEC}
+.hero-screen{background:#F4F8F7;border-radius:16px;padding:24px;text-align:left}
+.hero-screen .urg{background:#ECFDF5;color:#059669;padding:12px;border-radius:10px;font-weight:600;font-size:14px;text-align:center;margin-bottom:12px}
+.hero-screen .line{height:8px;background:#E2EDEC;border-radius:4px;margin:8px 0}
+.hero-screen .line.short{width:70%}
+.hero-screen .line.med{width:85%}
+.hero-screen .tag{display:inline-block;padding:4px 10px;background:#CCFBF1;color:#0F766E;border-radius:8px;font-size:11px;font-weight:600;margin-top:8px}
+
+/* Features */
+.features{max-width:1100px;margin:0 auto;padding:60px 24px}
+.features-title{text-align:center;font-family:'Fraunces',serif;font-size:32px;font-weight:600;margin-bottom:40px}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.feature{background:#fff;border-radius:16px;padding:28px 24px;border:1px solid #E2EDEC;transition:all .2s}
+.feature:hover{box-shadow:0 8px 32px rgba(15,118,110,.08);transform:translateY(-3px)}
+.feature-icon{font-size:32px;margin-bottom:12px}
+.feature h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.feature p{font-size:13px;color:#4a6463;line-height:1.6}
+
+/* How it works */
+.how{max-width:1100px;margin:0 auto;padding:60px 24px}
+.how-title{text-align:center;font-family:'Fraunces',serif;font-size:32px;font-weight:600;margin-bottom:40px}
+.how-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.step{text-align:center;padding:20px}
+.step-num{width:48px;height:48px;background:linear-gradient(135deg,#0F766E,#14B8A6);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;margin:0 auto 14px}
+.step h3{font-size:15px;font-weight:600;margin-bottom:6px}
+.step p{font-size:13px;color:#4a6463;line-height:1.5}
+
+/* Trust */
+.trust{background:#fff;padding:50px 24px;border-top:1px solid #E2EDEC;border-bottom:1px solid #E2EDEC}
+.trust-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.trust-item{text-align:center}
+.trust-item .num{font-size:32px;font-weight:700;color:#0F766E;font-family:'Fraunces',serif}
+.trust-item .lbl{font-size:12px;color:#7a9492;margin-top:2px}
+
+/* CTA */
+.cta-section{max-width:1100px;margin:0 auto;padding:60px 24px;text-align:center}
+.cta-card{background:linear-gradient(135deg,#0F766E,#0A5C56);border-radius:24px;padding:50px 30px;color:#fff}
+.cta-card h2{font-family:'Fraunces',serif;font-size:28px;margin-bottom:12px}
+.cta-card p{font-size:15px;opacity:.85;max-width:500px;margin:0 auto 24px;line-height:1.6}
+.cta-card .cta-btn{background:#fff;color:#0F766E;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+
+/* Footer */
+.footer{max-width:1100px;margin:0 auto;padding:30px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:12px;color:#7a9492}
+.footer-links{display:flex;gap:20px}
+.footer-links a{color:#7a9492;text-decoration:none}
+.footer-links a:hover{color:#0F766E}
+
+@media(max-width:640px){
+.nav-links a:not(.cta-btn){display:none}
+.hero{padding:40px 20px 20px}
+.hero h1{font-size:28px}
+.hero p{font-size:15px}
+.trust-inner{gap:24px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+<a href="/" class="nav-logo"><div class="nav-icon">M</div>MedGuide AI</a>
+<div class="nav-links">
+<a href="#features">Features</a>
+<a href="#how">How it works</a>
+<a href="https://medguide-ai-dun.vercel.app/" class="cta-btn">Open App</a>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-badge">🩺 AI-POWERED HEALTH INTELLIGENCE</div>
+<h1>Health guidance that<br>thinks like a <span>doctor</span></h1>
+<p>Describe your symptoms and get intelligent, safety-first health guidance — powered by AI with doctor-level clinical reasoning. Free for everyone, everywhere.</p>
+<div class="hero-btns">
+<a href="https://medguide-ai-dun.vercel.app/" class="cta-btn">Start Free Health Check →</a>
+<a href="#features" class="cta-btn-outline">Learn More</a>
+</div>
+<div class="hero-visual">
+<div class="hero-screen">
+<div class="urg">✅ Low Concern — Monitor at home</div>
+<div class="line"></div>
+<div class="line med"></div>
+<div class="line short"></div>
+<div class="tag">💡 Relief Tips</div>
+<div class="tag" style="margin-left:6px">📋 PDF Report</div>
+</div>
+</div>
+</section>
+
+<section class="features" id="features">
+<h2 class="features-title">Everything your health needs</h2>
+<div class="features-grid">
+<div class="feature"><div class="feature-icon">🧠</div><h3>Doctor-Level AI Reasoning</h3><p>Our AI thinks through symptoms step by step — checking anatomy, considering your age and history, and ruling out what others might miss. Not a chatbot. A clinical reasoning engine.</p></div>
+<div class="feature"><div class="feature-icon">📸</div><h3>Photo Analysis</h3><p>Take a photo of a rash, wound, or swelling. The AI analyzes it visually alongside your symptoms for more accurate guidance.</p></div>
+<div class="feature"><div class="feature-icon">📊</div><h3>Vitals Tracking</h3><p>Log blood pressure, heart rate, temperature, weight, and blood sugar. See trends over time with beautiful charts.</p></div>
+<div class="feature"><div class="feature-icon">💊</div><h3>Medication Management</h3><p>Track your medications and the AI considers drug interactions when analyzing your symptoms.</p></div>
+<div class="feature"><div class="feature-icon">🔬</div><h3>Lab Results Interpreter</h3><p>Paste your blood test results and get plain-language explanations of what every value means.</p></div>
+<div class="feature"><div class="feature-icon">👨‍👩‍👧‍👦</div><h3>Family Health</h3><p>Add up to 5 family members. Check symptoms for your kids, parents, or partner — each with their own health history.</p></div>
+<div class="feature"><div class="feature-icon">📄</div><h3>PDF Reports</h3><p>Generate professional health reports you can share with your doctor via WhatsApp, email, or print.</p></div>
+<div class="feature"><div class="feature-icon">🔊</div><h3>Read Aloud</h3><p>Too sick to read? The app reads your assessment out loud in a calm, clear voice.</p></div>
+<div class="feature"><div class="feature-icon">🌍</div><h3>Global Health Alerts</h3><p>Stay informed about disease outbreaks and health emergencies happening around the world and in your region.</p></div>
+<div class="feature"><div class="feature-icon">🧘</div><h3>Mood Tracking</h3><p>Daily mood check-ins with trend charts. The AI spots mental health patterns over time.</p></div>
+<div class="feature"><div class="feature-icon">🌐</div><h3>12 Languages</h3><p>Get health guidance in English, isiZulu, Kiswahili, Hindi, Chinese, Arabic, Spanish, and more.</p></div>
+<div class="feature"><div class="feature-icon">🔒</div><h3>Private & Secure</h3><p>Your data is yours. Use without an account (stays on your phone) or sign up to sync across devices.</p></div>
+</div>
+</section>
+
+<section class="how" id="how">
+<h2 class="how-title">How it works</h2>
+<div class="how-steps">
+<div class="step"><div class="step-num">1</div><h3>Describe symptoms</h3><p>Tell the AI what you're experiencing. Type, speak, or add a photo.</p></div>
+<div class="step"><div class="step-num">2</div><h3>AI analyzes</h3><p>The AI applies clinical reasoning — checking for red flags, considering differentials, and thinking like a doctor.</p></div>
+<div class="step"><div class="step-num">3</div><h3>Get guidance</h3><p>Receive urgency level, possible conditions, relief tips, warning signs, and questions for your doctor.</p></div>
+<div class="step"><div class="step-num">4</div><h3>Take action</h3><p>Share the PDF report with your doctor, find a nearby clinic, or monitor at home.</p></div>
+</div>
+</section>
+
+<section class="trust">
+<div class="trust-inner">
+<div class="trust-item"><div class="num">12</div><div class="lbl">Languages</div></div>
+<div class="trust-item"><div class="num">24/7</div><div class="lbl">Always Available</div></div>
+<div class="trust-item"><div class="num">Free</div><div class="lbl">For Everyone</div></div>
+<div class="trust-item"><div class="num">100%</div><div class="lbl">Private</div></div>
+</div>
+</section>
+
+<section class="cta-section">
+<div class="cta-card">
+<h2>Your health, understood</h2>
+<p>MedGuide AI is free, private, and available in 12 languages. No downloads required — works right in your browser on any device.</p>
+<a href="https://medguide-ai-dun.vercel.app/" class="cta-btn">Start Free Health Check →</a>
+</div>
+</section>
+
+<footer class="footer">
+<span>© 2025 MedGuide AI. Not a medical device.</span>
+<div class="footer-links">
+<a href="/terms.html">Terms of Service</a>
+<a href="/privacy.html">Privacy Policy</a>
+<a href="mailto:support@medguide-ai.com">Contact</a>
+</div>
+</footer>
+
+</body>
+</html>
